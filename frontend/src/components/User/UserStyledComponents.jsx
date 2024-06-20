@@ -1,14 +1,17 @@
-import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 export const Container = styled.div`
   background-color: #44564c;
-  height: ${(props) => props.height};
+  min-height: ${(props) => props.height};
   display: flex;
-  justify-content: center;
+  flex-direction: column; 
+  justify-content: flex-start; 
   align-items: center;
   color: white;
+  padding-top: 60px;
+  padding-bottom: 30px; 
 `;
 
 export const Form = styled.form`

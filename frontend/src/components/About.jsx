@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import LinkedInLogo from "/src/assets/logo-linkedin.svg";
 import GithubLogo from "/src/assets/logo-github.svg";
 import { LoadingSpinner } from "./LoadingSpinner.jsx";
@@ -24,8 +24,8 @@ export const AboutUs = () => {
     "Hash Link",
     "React Icons",
     "REST API",
-    "Unsplash"
-    ];
+    "Unsplash",
+  ];
   const contactInfo = [
     {
       name: "Arnau Vidal",
@@ -80,7 +80,7 @@ export const AboutUs = () => {
             <li key={index}>{tech}</li>
           ))}
         </ul>
-        <CardsContainer id="contact"  className="from-bottom">
+        <CardsContainer id="contact" className="from-bottom">
           {contactInfo.map((contact, index) => (
             <Card key={index}>
               <Front>
@@ -153,7 +153,7 @@ const ContactContainer = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content:center;
+    justify-content: center;
     gap: 4px;
     padding: 0;
     li {

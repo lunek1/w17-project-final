@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
   Container,
@@ -19,7 +19,7 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "./AuthContext";
 import { BookingContext } from "../Booking/BookingContext";
 
-export const Login = ({ height = '100vh' }) => {
+export const Login = ({ height = "100vh" }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { login } = useAuth();
@@ -62,45 +62,53 @@ export const Login = ({ height = '100vh' }) => {
       });
 
       const data = await response.json();
-      
+
       if (response.ok) {
-        setSuccessMessage(
-          " log in successfully. "
-        );
+        setSuccessMessage(" log in successfully. ");
         setErrorMessage("");
-        
+
         const { roomId, guests, checkinDate, checkoutDate } = bookingDetails;
 
-        if (roomId && checkinDate)
-        {
+        if (roomId && checkinDate) {
           // Create a booking
-          const bookingResponse = await fetch("https://sunside-hotel.onrender.com/booking", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ userId: data.userId, roomId, guests, checkinDate, checkoutDate }),
-          });
-
-          //change room status
-          const bookingResult = await fetch("https://sunside-hotel.onrender.com/hotelrooms/book", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ roomId, checkinDate, checkoutDate }),
-          });
-
-          setSuccessMessage(
-            "Log in successfully and booking confirmed."
+          const bookingResponse = await fetch(
+            "https://sunside-hotel.onrender.com/booking",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                userId: data.userId,
+                roomId,
+                guests,
+                checkinDate,
+                checkoutDate,
+              }),
+            }
           );
+
+          //Change room status
+          const bookingResult = await fetch(
+            "https://sunside-hotel.onrender.com/hotelrooms/book",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ roomId, checkinDate, checkoutDate }),
+            }
+          );
+
+          setSuccessMessage("Log in successfully and booking confirmed.");
         }
 
         login(data.accessToken);
         navigate("/user-details", {
           state: {
-            successMessage:
-              "Your room is booked successfully.",}});
+            successMessage: "Your room is booked successfully.",
+          },
+        });
       } else {
         setError("Invalid email or password");
       }

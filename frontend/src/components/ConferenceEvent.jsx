@@ -1,4 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { Footer } from "./Footer/Footer.jsx";
+import { BackToTopButton } from "./BackToTopButton.jsx";
+import { RoomsSlide } from "./Rooms/RoomsSlide.jsx";
+import { HashLink } from "react-router-hash-link";
 import styled from "styled-components";
 import eventHero from "/src/assets/event-hero.jpg";
 import eventOffice1 from "/src/assets/event-office1.jpg";
@@ -10,10 +14,6 @@ import eventFamily3 from "/src/assets/event-family3.jpg";
 import eventWedding1 from "/src/assets/event-wedding1.jpg";
 import eventWedding2 from "/src/assets/event-wedding2.jpg";
 import eventWedding3 from "/src/assets/event-wedding3.jpg";
-import { Footer } from "./Footer/Footer.jsx";
-import { BackToTopButton } from "./BackToTopButton.jsx";
-import { RoomsSlide } from "./Rooms/RoomsSlide.jsx";
-import { HashLink } from "react-router-hash-link";
 
 export const ConferenceEvent = () => {
   const officeImages = [eventOffice1, eventOffice2, eventOffice3];

@@ -6,13 +6,13 @@ import { Register } from "./components/User/Register";
 import { AuthProvider } from "./components/User/AuthContext";
 import { UserPage } from "./components/User/UserPage";
 import { Roomspage } from "./components/Rooms/Roomspage";
-import ScrollToTop from "./components/ScrollToTop"; //this component makes all pages start from the top
+import ScrollToTop from "./components/ScrollToTop";
 import { BookingConfirm } from "./components/Booking/BookingConfirm";
 import { BookingProvider } from "./components/Booking/BookingContext";
-import { RoomResults } from './components/Booking/RoomResults';
+import { RoomResults } from "./components/Booking/RoomResults";
 import { AboutUs } from "./components/About";
-import { ConferenceEvent } from './components/ConferenceEvent';
-import {MainPage}from "./components/MainPage";
+import { ConferenceEvent } from "./components/ConferenceEvent";
+import { MainPage } from "./components/MainPage";
 
 export const App = () => {
   const [rooms, setRooms] = useState([]);

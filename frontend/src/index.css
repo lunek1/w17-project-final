@@ -26,7 +26,6 @@ body {
 }
 
 /* animations ---------------------------------------------------- */
-
 .from-top {
   animation: slideTop 1.5s ease-in-out;
 }

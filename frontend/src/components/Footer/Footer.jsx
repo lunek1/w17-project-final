@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { ContactIcon, FindUsLink, ListWrapper } from "./Footer.styled";
+import styled from "styled-components";
 import hotelLogo from "../../assets/logo-hotel.svg";
 import fbLogo from "../../assets/logo-facebook.svg";
 import insLogo from "../../assets/logo-instagram.svg";

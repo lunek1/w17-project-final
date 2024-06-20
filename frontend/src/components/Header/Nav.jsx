@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import { FaAngleDown } from "react-icons/fa";
-import logo from "../../assets/logo.png";
 import { HashLink } from "react-router-hash-link";
+import styled from "styled-components";
+import logo from "../../assets/logo.png";
 
 const NavContainer = styled.nav`
   padding: 5px;
@@ -45,7 +45,7 @@ const NavList = styled.ul`
 
   a {
     position: relative;
-    color: var(--color-darkgreen); /* Text color white */
+    color: var(--color-darkgreen); 
     text-decoration: none;
     padding: 10px 0;
     font-size: 16px;
@@ -68,7 +68,7 @@ const NavList = styled.ul`
     }
 
     &:hover {
-      color: #d3af97; /* Change color on hover */
+      color: #d3af97;
     }
 
     &:hover::after {

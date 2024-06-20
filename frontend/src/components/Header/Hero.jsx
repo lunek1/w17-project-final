@@ -24,9 +24,11 @@ const TextOverlayContainer = styled.div`
   transform: translate(-50%, -50%);
   z-index: 1000;
   text-align: center;
+
   @media all and (min-width: 744px) {
     top: -22em;
   }
+
   @media all and (min-width: 1024px) {
     top: -22em;
   }
@@ -50,8 +52,10 @@ const TextOverlay = styled.div`
       opacity: 1;
     }
   }
+
   @media all and (min-width: 744px) {
   }
+
   @media all and (min-width: 1024px) {
     font-size: 72px;
     line-height: 1em;

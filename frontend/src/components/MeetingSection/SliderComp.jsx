@@ -1,14 +1,48 @@
-import styled from "styled-components";
 import { SlideContentBox } from "./SlideContentBox";
 import { Splide, SplideTrack, SplideSlide } from "@splidejs/react-splide";
-// Default theme
+import styled from "styled-components";
 import "@splidejs/react-splide/css";
-// import '@splidejs/react-splide/css/sea-green';
 import slide01 from "../../assets/01-slide.jpg";
 import slide02 from "../../assets/02-slide.jpg";
 import slide03 from "../../assets/03-slide.jpg";
 import slide04 from "../../assets/04-slide.jpg";
 import slide05 from "../../assets/05-slide.jpg";
+
+const SplideContainer = styled.div`
+  background-color: #44554b;
+  padding: 16px;
+
+  .splide__slide--focus {
+    border: 2px solid #ff6600; /* Custom border for focused slide */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1); /* Custom shadow for focused slide */
+    div {
+      img {
+        transform: scale(1.3);
+        transition: transform 0.3s ease-in-out;
+      }
+    }
+  }
+
+  .splide__slide {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .splide__track {
+    height: 400px;
+
+    @media (min-width: 700px) and(max-width: 1200px) {
+      height: 500px;
+    }
+
+    @media (min-width: 700px) and(max-width: 1200px) {
+      height: 500px;
+    }
+
+    @media (min-width: 1501px) {
+      height: 700px;
+    }
+  }
+`;
 
 //See Splidejs.com documentation
 export const SliderComp = () => {
@@ -112,36 +146,3 @@ export const SliderComp = () => {
     </SplideContainer>
   );
 };
-
-const SplideContainer = styled.div`
-  background-color: #44554b;
-  padding: 16px;
-
-  .splide__slide--focus {
-    border: 2px solid #ff6600; /* Custom border for focused slide */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 1); /* Custom shadow for focused slide */
-    div {
-      img {
-        transform: scale(1.3);
-        transition: transform 0.3s ease-in-out;
-      }
-    }
-  }
-
-  .splide__slide {
-    transition: transform 0.3s ease-in-out;
-  }
-
-  .splide__track {
-    height: 400px;
-    @media (min-width: 700px) and(max-width: 1200px) {
-      height: 500px;
-    }
-    @media (min-width: 700px) and(max-width: 1200px) {
-      height: 500px;
-    }
-    @media (min-width: 1501px) {
-      height: 700px;
-    }
-  }
-`;

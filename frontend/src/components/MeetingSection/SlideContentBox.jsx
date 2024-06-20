@@ -1,25 +1,5 @@
 import styled from "styled-components";
 
-export const SlideContentBox = ({
-  imgSrc,
-  imgAlt,
-  title,
-  description,
-  linkText,
-  linkHref,
-}) => {
-  return (
-    <ItemContainer>
-      <img src={imgSrc} alt={imgAlt} />
-      <DescriptionContainer>
-        <h2>{title}</h2>
-        <p>{description}</p>
-        <a href={linkHref}>{linkText}</a>
-      </DescriptionContainer>
-    </ItemContainer>
-  );
-};
-
 const ItemContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -46,6 +26,7 @@ const DescriptionContainer = styled.div`
   display: inline;
   padding: 0 5px;
   opacity: 50%;
+
   @media (min-width: 400px) {
     padding: 0;
   }
@@ -58,6 +39,7 @@ const DescriptionContainer = styled.div`
       text-align: left;
     }
   }
+
   p {
     display: inline;
     margin: 0;
@@ -78,6 +60,24 @@ const DescriptionContainer = styled.div`
   a:hover {
     text-decoration: underline;
   }
-  
-
 `;
+
+export const SlideContentBox = ({
+  imgSrc,
+  imgAlt,
+  title,
+  description,
+  linkText,
+  linkHref,
+}) => {
+  return (
+    <ItemContainer>
+      <img src={imgSrc} alt={imgAlt} />
+      <DescriptionContainer>
+        <h2>{title}</h2>
+        <p>{description}</p>
+        <a href={linkHref}>{linkText}</a>
+      </DescriptionContainer>
+    </ItemContainer>
+  );
+};

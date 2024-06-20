@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 //LIST --------------------------------------------------------------------------------
-
 export const ListWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -49,7 +48,6 @@ export const ListWrapper = styled.div`
 `;
 
 //FIND US LINKS--------------------------------------------------------------------------------
-
 export const FindUsLink = ({ link, imgSrc, altText, labelFor, label }) => (
   <ContactLink href={link}>
     <IconImage className="no-rotate" src={imgSrc} alt={altText} />
@@ -57,7 +55,6 @@ export const FindUsLink = ({ link, imgSrc, altText, labelFor, label }) => (
 );
 
 //CONTACT LINKS--------------------------------------------------------------------------------
-
 export const ContactIcon = ({ link, imgSrc, altText, labelFor, label }) => (
   <ContactLink href={link}>
     <IconImage src={imgSrc} alt={altText} />

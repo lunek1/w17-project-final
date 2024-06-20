@@ -1,4 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { Footer } from "../Footer/Footer.jsx";
+import { BackToTopButton } from "../BackToTopButton.jsx";
+import { RoomsSlide } from "./RoomsSlide.jsx";
+import { HashLink } from "react-router-hash-link";
 import styled from "styled-components";
 import standardRoom1 from "/src/assets/room-standard.jpg";
 import standardRoom2 from "/src/assets/room-standard2.jpg";
@@ -9,10 +13,6 @@ import premiumRoom3 from "/src/assets/room-premium3.jpg";
 import luxuryRoom1 from "/src/assets/room-luxury.jpg";
 import luxuryRoom2 from "/src/assets/room-luxury2.jpg";
 import luxuryRoom3 from "/src/assets/room-luxury3.jpg";
-import { Footer } from "../Footer/Footer.jsx";
-import { BackToTopButton } from "../BackToTopButton.jsx";
-import { RoomsSlide } from "./RoomsSlide.jsx";
-import { HashLink } from "react-router-hash-link";
 
 export const Roomspage = () => {
   const standardImages = [standardRoom1, standardRoom2, standardRoom3];
@@ -96,7 +96,7 @@ export const Roomspage = () => {
 
   return (
     <RoomsContainer>
-      <h2  className="from-right">Our Rooms</h2>
+      <h2 className="from-right">Our Rooms</h2>
       <Grid className="from-bottom">
         <RoomsSlide images={standardImages} />
         <GridItem>
@@ -137,7 +137,7 @@ export const Roomspage = () => {
 };
 
 const RoomsContainer = styled.div`
-  background-color:var(--color-darkgreen);
+  background-color: var(--color-darkgreen);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -150,6 +150,7 @@ const RoomsContainer = styled.div`
     line-height: 44px;
     font-weight: 700;
     font-family: "Apercu", sans-serif;
+
     @media (min-width: 1000px) {
       font-size: 40px;
     }
@@ -187,6 +188,7 @@ const GridItem = styled.div`
     @media (min-width: 1000px) {
       padding: 15px 50px 100px 50px;
     }
+
     @media (min-width: 1000px) {
       padding: 0;
     }
@@ -195,6 +197,7 @@ const GridItem = styled.div`
       text-transform: uppercase;
       margin: 0;
     }
+
     p {
       margin: 15px 0 20px 0;
     }
@@ -235,6 +238,7 @@ const RoomDetails = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     font-weight: bold;
+
     p {
       margin: 0;
     }
@@ -255,6 +259,7 @@ const Button = styled.button`
     transform: scale(1.05);
     transition: all ease 0.3s;
   }
+
   @media (max-width: 768px) {
     padding: 10px 15px;
   }

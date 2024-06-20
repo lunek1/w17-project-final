@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { BookingContext } from "../Booking/BookingContext";
 import { useAuth } from "./AuthContext";
@@ -51,10 +51,10 @@ const BlackStyledLink = styled(StyledLink)`
 `;
 
 const NoBookingsMessage = styled.div`
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 `;
 
-export const UserPage = ({ height = '100vh' }) => {
+export const UserPage = ({ height = "100vh" }) => {
   const { bookingDetails } = useContext(BookingContext); // Not used
   const navigate = useNavigate();
   const { accessToken, logout } = useAuth();
@@ -93,7 +93,7 @@ export const UserPage = ({ height = '100vh' }) => {
               Authorization: accessToken,
             },
           }
-        )
+        );
         const bookings = await bookingsResponse.json();
         setBookings(bookings);
       } else {
@@ -137,76 +137,119 @@ export const UserPage = ({ height = '100vh' }) => {
     }
   };
 
+  const handleCancelBooking = async (bookingId, checkinDate, checkoutDate) => {
+    try {
+      const response = await fetch(
+        "https://sunside-hotel.onrender.com/hotelrooms/cancel",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: accessToken,
+          },
+          body: JSON.stringify({
+            roomId: bookingId,
+            checkinDate: checkinDate,
+            checkoutDate: checkoutDate,
+          }),
+        }
+      );
+
+      if (response.ok) {
+        // Reload bookings after cancellation
+        fetchUserDetails();
+      } else {
+        const errorData = await response.json();
+        setError(errorData.message || "Failed to cancel booking");
+      }
+    } catch (error) {
+      console.error("Error canceling booking:", error);
+      setError("Failed to cancel booking");
+    }
+  };
+
   return (
     <Container height={height} style={{ marginTop: "30px" }}>
       <Content>
         <Heading>BOOKING INFORMATION</Heading>
         {bookings && bookings.length > 0 ? (
-         bookings.map((booking) => ( 
-          <UserInfoContainer key={booking.id}>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                marginBottom: "10px",
-              }}
-            >
-              <UserDetails
+          bookings.map((booking) => (
+            <UserInfoContainer key={booking.id}>
+              <div
                 style={{
                   display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  marginRight: "15px",
+                  flexDirection: "row",
+                  marginBottom: "10px",
                 }}
               >
-                <StyledImage src={enter} alt="Check-in" />
-                <b>Check-in:</b>
-                <div>{new Date(booking.checkinDate).toLocaleDateString("sv-SE")}</div>
-              </UserDetails>
-              <UserDetails
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  marginRight: "15px",
-                }}
-              >
-                <StyledImage src={exit} alt="Check-out" />
-                <b>Check-out:</b>
-                <div>{new Date(booking.checkoutDate).toLocaleDateString("sv-SE")}</div>
-              </UserDetails>
-              <UserDetails
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                }}
-              >
-                <StyledImage src={guest} alt="Guests" />
-                <b>Guests:</b>
-                <div>{booking.guests}</div>
-              </UserDetails>
-            </div>
-            <div style={{ textAlign: "center", marginTop: "10px" }}>
-              <BlackStyledLink to="/active-booking">
-                Click here to cancel your booking
-              </BlackStyledLink>
-            </div>
-          </UserInfoContainer>
-        ))
-        ):(
-          <NoBookingsMessage>No active bookings.</NoBookingsMessage>  
-        )}  
+                <UserDetails
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    marginRight: "15px",
+                  }}
+                >
+                  <StyledImage src={enter} alt="Check-in" />
+                  <b>Check-in:</b>
+                  <div>
+                    {new Date(booking.checkinDate).toLocaleDateString("sv-SE")}
+                  </div>
+                </UserDetails>
+                <UserDetails
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    marginRight: "15px",
+                  }}
+                >
+                  <StyledImage src={exit} alt="Check-out" />
+                  <b>Check-out:</b>
+                  <div>
+                    {new Date(booking.checkoutDate).toLocaleDateString("sv-SE")}
+                  </div>
+                </UserDetails>
+                <UserDetails
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                  }}
+                >
+                  <StyledImage src={guest} alt="Guests" />
+                  <b>Guests:</b>
+                  <div>{booking.guests}</div>
+                </UserDetails>
+              </div>
+              <div style={{ textAlign: "center", marginTop: "10px" }}>
+                <BlackStyledLink
+                  onClick={() =>
+                    handleCancelBooking(
+                      booking.id,
+                      booking.checkinDate,
+                      booking.checkoutDate
+                    )
+                  }
+                >
+                  Click here to cancel your booking
+                </BlackStyledLink>
+              </div>
+            </UserInfoContainer>
+          ))
+        ) : (
+          <NoBookingsMessage>No active bookings.</NoBookingsMessage>
+        )}
 
         <UserInfoContainer>
-            <UserDetails>
-              <b>Name:</b> {userDetails ? userDetails.name : ""}
-            </UserDetails>
-            <UserDetails>
-              <b>Email:</b> {userDetails ? userDetails.email : ""}
-            </UserDetails>
+          <UserDetails>
+            <b>Name:</b> {userDetails ? userDetails.name : ""}
+          </UserDetails>
+          <UserDetails>
+            <b>Email:</b> {userDetails ? userDetails.email : ""}
+          </UserDetails>
         </UserInfoContainer>
-               
+
         {error && <ErrorMessage>{error}</ErrorMessage>}
         <Button
           $delete

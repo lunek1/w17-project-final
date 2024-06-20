@@ -1,6 +1,6 @@
+import { Introduction } from "../Introduction";
+import { Booking } from "./Booking";
 import styled from "styled-components";
-import { Introduction } from '../Introduction'
-import { Booking } from './Booking';
 
 const BookingBox = styled.div`
   background-color: #f0f2f0;
@@ -12,7 +12,7 @@ const BookingBox = styled.div`
   position: relative;
   box-sizing: border-box;
   top: -3em;
- 
+
   @media all and (min-width: 744px) {
     max-height: 28em;
   }
@@ -21,13 +21,13 @@ const BookingBox = styled.div`
     padding-top: 144px;
     max-height: 30em;
   }
-`
+`;
 
-export const BookingSection = ({onSearch}) => {
+export const BookingSection = ({ onSearch }) => {
   return (
     <BookingBox>
-      <Booking onSearch={onSearch}/>
+      <Booking onSearch={onSearch} />
       <Introduction />
     </BookingBox>
-  )
-}
+  );
+};

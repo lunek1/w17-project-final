@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
-// Styling for the introduction container  z-index: 998;  margin-left: auto;margin-right: auto;padding-left: 20%;padding-right: 20%;
-
+// Styling for the introduction container
 const IntroContainer = styled.div`
   width: 100%;
   padding: 60px 40px;

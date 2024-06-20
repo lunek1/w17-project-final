@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 export const Reviews = () => {
@@ -81,7 +81,6 @@ export const Reviews = () => {
 
 // Styled components
 const Title = styled.h3`
-
   margin: 25px 0 0 0;
   color: #44554b;
   font-size: 40px;
@@ -165,7 +164,7 @@ const ReadMoreButton = styled.button`
   display: block;
   margin: 20px auto 70px auto;
   padding: 10px 20px;
-  background-color:#44554b;
+  background-color: #44554b;
   color: #fff;
   border: none;
   border-radius: 8px;
