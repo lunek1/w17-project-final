@@ -73,7 +73,7 @@ export const UserPage = ({ height = "100vh" }) => {
   const fetchUserDetails = async () => {
     try {
       const response = await fetch(
-        "https://sunsidehotel.onrender.com/user-details",
+        "https://sunside-hotel.onrender.com/user-details",
         {
           headers: {
             Authorization: accessToken,
@@ -95,7 +95,7 @@ export const UserPage = ({ height = "100vh" }) => {
           }
         );
         const bookings = await bookingsResponse.json();
-        setBookings(bookings); // Update bookings state with the latest data
+        setBookings(bookings);
       } else {
         setError("Failed to fetch user details");
       }
@@ -134,43 +134,6 @@ export const UserPage = ({ height = "100vh" }) => {
     } catch (error) {
       console.error("Error deleting account:", error);
       setError("Failed to delete account");
-    }
-  };
-
-  const handleCancelBooking = async (bookingId, checkinDate, checkoutDate) => {
-    try {
-      console.log("Attempting to cancel booking...");
-      console.log("accessToken:", accessToken);
-
-      const response = await fetch(
-        "https://sunside-hotel.onrender.com/hotelrooms/cancel",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: accessToken,
-          },
-          body: JSON.stringify({
-            roomId: bookingId,
-            checkinDate,
-            checkoutDate,
-          }),
-        }
-      );
-
-      console.log("Response status:", response.status);
-      if (response.ok) {
-        const data = await response.json();
-        console.log("Cancellation successful:", data);
-        fetchUserDetails(); // Assuming this function updates user details
-      } else {
-        const errorData = await response.json();
-        console.error("Cancellation failed:", errorData);
-        setError(errorData.message || "Failed to cancel booking");
-      }
-    } catch (error) {
-      console.error("Error canceling booking:", error);
-      setError("Failed to cancel booking");
     }
   };
 
@@ -229,15 +192,7 @@ export const UserPage = ({ height = "100vh" }) => {
                 </UserDetails>
               </div>
               <div style={{ textAlign: "center", marginTop: "10px" }}>
-                <BlackStyledLink
-                  onClick={() =>
-                    handleCancelBooking(
-                      booking.id,
-                      booking.checkinDate,
-                      booking.checkoutDate
-                    )
-                  }
-                >
+                <BlackStyledLink to="/active-booking">
                   Click here to cancel your booking
                 </BlackStyledLink>
               </div>

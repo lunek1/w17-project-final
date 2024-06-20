@@ -45,7 +45,7 @@ export const RoomResults = ({ rooms, checkinDate }) => {
     e.preventDefault();
 
     fetch(
-      "https://sunsidehotel.onrender.com/hotelrooms/booking/check-availability",
+      "https://sunside-hotel.onrender.com/hotelrooms/booking/check-availability",
       {
         method: "POST",
         headers: {
@@ -253,7 +253,7 @@ const BookingForm = styled.form`
   font-family: "Apercu Pro", sans-serif;
   font-size: 14px;
   text-align: left;
-
+  
   @media all and (min-width: 744px) {
     flex-direction: row;
     justify-content: center;
@@ -363,7 +363,7 @@ const DateInput = styled.input`
   padding: 5px;
   width: 120px;
   font-size: 14px;
-
+  
   @media all and (min-width: 744px) {
     font-size: 16px;
     width: 140px;
