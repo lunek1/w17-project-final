@@ -47,7 +47,7 @@ export const Register = ({ height = "100vh" }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch("https://sunside-hotel.onrender.com/users", {
+      const response = await fetch("https://sunsidehotel.onrender.com/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -68,7 +68,7 @@ export const Register = ({ height = "100vh" }) => {
         if (roomId && checkinDate) {
           // Create a booking
           const bookingResponse = await fetch(
-            "https://sunside-hotel.onrender.com/booking",
+            "https://sunsidehotel.onrender.com/booking",
             {
               method: "POST",
               headers: {
@@ -86,7 +86,7 @@ export const Register = ({ height = "100vh" }) => {
 
           //Change room status
           const bookingResult = await fetch(
-            "https://sunside-hotel.onrender.com/hotelrooms/book",
+            "https://sunsidehotel.onrender.com/hotelrooms/book",
             {
               method: "POST",
               headers: {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { BookingContext } from "../Booking/BookingContext";
 import { useAuth } from "./AuthContext";
@@ -73,7 +73,7 @@ export const UserPage = ({ height = "100vh" }) => {
   const fetchUserDetails = async () => {
     try {
       const response = await fetch(
-        "https://sunside-hotel.onrender.com/user-details",
+        "https://sunsidehotel.onrender.com/user-details",
         {
           headers: {
             Authorization: accessToken,
@@ -95,7 +95,7 @@ export const UserPage = ({ height = "100vh" }) => {
           }
         );
         const bookings = await bookingsResponse.json();
-        setBookings(bookings);
+        setBookings(bookings); // Update bookings state with the latest data
       } else {
         setError("Failed to fetch user details");
       }
@@ -139,6 +139,9 @@ export const UserPage = ({ height = "100vh" }) => {
 
   const handleCancelBooking = async (bookingId, checkinDate, checkoutDate) => {
     try {
+      console.log("Attempting to cancel booking...");
+      console.log("accessToken:", accessToken);
+
       const response = await fetch(
         "https://sunside-hotel.onrender.com/hotelrooms/cancel",
         {
@@ -149,17 +152,20 @@ export const UserPage = ({ height = "100vh" }) => {
           },
           body: JSON.stringify({
             roomId: bookingId,
-            checkinDate: checkinDate,
-            checkoutDate: checkoutDate,
+            checkinDate,
+            checkoutDate,
           }),
         }
       );
 
+      console.log("Response status:", response.status);
       if (response.ok) {
-        // Reload bookings after cancellation
-        fetchUserDetails();
+        const data = await response.json();
+        console.log("Cancellation successful:", data);
+        fetchUserDetails(); // Assuming this function updates user details
       } else {
         const errorData = await response.json();
+        console.error("Cancellation failed:", errorData);
         setError(errorData.message || "Failed to cancel booking");
       }
     } catch (error) {

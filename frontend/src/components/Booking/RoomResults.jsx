@@ -45,7 +45,7 @@ export const RoomResults = ({ rooms, checkinDate }) => {
     e.preventDefault();
 
     fetch(
-      "https://sunside-hotel.onrender.com/hotelrooms/booking/check-availability",
+      "https://sunsidehotel.onrender.com/hotelrooms/booking/check-availability",
       {
         method: "POST",
         headers: {
