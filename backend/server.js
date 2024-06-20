@@ -91,20 +91,21 @@ const authenticateUser = async (req, res, next) => {
   next();
 };
 
-if (+process.env.RESET_DB) {
+if (process.env.RESET_DB === "1") {
   const seedDatabase = async () => {
     try {
-      await Hotelrooms.deleteMany({});
-      await RoomStatus.deleteMany({});
+      await HotelRoom.deleteMany({});
+      await RoomStatus.deleteMany({}); 
       console.log("Database cleared");
+
       const saveRoomPromises = roomsData.map((room) =>
-        new Hotelrooms(room).save()
+        new HotelRoom(room).save()
       );
       const saveStatusPromises = roomStatusData.map((status) =>
         new RoomStatus(status).save()
       );
 
-      await Promise.all(saveRoomPromises, saveStatusPromises);
+      await Promise.all([...saveRoomPromises, ...saveStatusPromises]);
       console.log("Database seeded with initial data");
     } catch (error) {
       console.error("Error seeding database:", error);
