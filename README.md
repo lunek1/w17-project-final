@@ -14,4 +14,5 @@ Even though we are really proud and happy of what we have achived on this last t
 ## View it live
 
 Frontend [here](https://sunsidehotel.netlify.app/)
+
 Backend [here](https://sunside-hotel.onrender.com/))
