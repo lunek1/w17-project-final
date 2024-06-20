@@ -4,7 +4,6 @@ import { BackToTopButton } from "./BackToTopButton.jsx";
 import { RoomsSlide } from "./Rooms/RoomsSlide.jsx";
 import { HashLink } from "react-router-hash-link";
 import styled from "styled-components";
-import eventHero from "/src/assets/event-hero.jpg";
 import eventOffice1 from "/src/assets/event-office1.jpg";
 import eventOffice2 from "/src/assets/event-office2.jpg";
 import eventOffice3 from "/src/assets/event-office3.jpg";
@@ -98,7 +97,6 @@ export const ConferenceEvent = () => {
             setting.
           </p>
         </div>
-        <img src={eventHero} alt="hero image conference & event" />
       </Hero>
       <Grid className="from-bottom">
         <RoomsSlide images={officeImages} />
@@ -145,37 +143,30 @@ const EventsContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 0px;
-  padding-top: 100px;
+  padding-top: 350px;
+
+  @media (max-width: 768px) {
+    padding-top: 400px;
+  }
+
+  @media (max-width: 490px) {
+    padding-top: 450px;
+  }
+
+  @media (max-width: 350px) {
+    padding-top: 500px;
+  }
 `;
 
 const Hero = styled.div`
   position: relative;
   width: 100%;
-  height: 450px;
+  height: auto;
   display: flex;
   color: var(--color-white);
   flex-direction: column;
   justify-content: end;
   align-items: center;
-
-  > img {
-    transform-origin: bottom;
-    width: 100%;
-    object-fit: cover;
-    margin-bottom: 50px;
-
-    animation: fade-in linear;
-    animation-timeline: view();
-  }
-
-  @keyframes fade-in {
-    from {
-      scale: 0;
-    }
-    to {
-      scale: 2;
-    }
-  }
 
   div {
     z-index: 10;
@@ -186,18 +177,21 @@ const Hero = styled.div`
     align-items: center;
     max-width: 700px;
     margin: auto;
-    bottom: 100px;
+    padding-bottom: 50px;
+
     h2 {
       font-size: 30px;
       margin: 0 5px;
       text-align: center;
-      line-height: 44px;
+      line-height: 1.4;
       font-weight: 700;
       font-family: "Apercu", sans-serif;
+
       @media (min-width: 1000px) {
         font-size: 40px;
       }
     }
+
     p {
       animation: slideTop 1.5s ease-in-out;
       text-align: center;
@@ -236,6 +230,7 @@ const GridItem = styled.div`
     @media (min-width: 1000px) {
       padding: 15px 50px 100px 50px;
     }
+
     @media (min-width: 1000px) {
       padding: 0;
     }
@@ -244,6 +239,7 @@ const GridItem = styled.div`
       text-transform: uppercase;
       margin: 0;
     }
+
     p {
       margin: 15px 0 20px 0;
     }
@@ -279,6 +275,7 @@ const EventDetails = styled.div`
   p {
     margin: 10px 0;
   }
+
   a {
     text-decoration: none;
     color: var(--color-gold);
@@ -288,6 +285,7 @@ const EventDetails = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     font-weight: bold;
+
     p {
       margin: 0;
     }

@@ -142,7 +142,11 @@ const RoomsContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 130px;
+  padding-top: 100px;
+
+  @media (max-width: 800px) {
+    padding-top: 150px;
+  }
 
   h2 {
     color: var(--color-white);
@@ -150,6 +154,7 @@ const RoomsContainer = styled.div`
     line-height: 44px;
     font-weight: 700;
     font-family: "Apercu", sans-serif;
+    padding-bottom: 10px;
 
     @media (min-width: 1000px) {
       font-size: 40px;
